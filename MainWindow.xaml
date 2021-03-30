@@ -1,0 +1,192 @@
+﻿<Window x:Class="ad2ex1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:View.jo="clr-namespace:ad2ex1.View.jo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="617" Width="1100">
+    <Grid Margin="0,0,0,-1" Height="547" VerticalAlignment="Top" Background="White">
+        <StackPanel HorizontalAlignment="Left" Height="195" Margin="495,343,0,0" VerticalAlignment="Top" Width="275" Background="#FFC5C2C2"/>
+        <Slider x:Name="RectangleHeight"  Margin="70,514,0,2" 
+  Width="160" Orientation="Horizontal" HorizontalAlignment="Left" 
+  Value="50" Minimum="0" Maximum="200" 
+  SmallChange="1" LargeChange="10"
+  TickPlacement="BottomRight" TickFrequency="10" ValueChanged="RectangleHeight_ValueChanged" RenderTransformOrigin="0.5,0.5" Background="#FF959595" Foreground="#FFE5E5E5" BorderBrush="#FFB03E3E">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.194"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.747"/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Slider x:Name="RectangleHeight_Copy"  Margin="20,340,0,64" 
+	  Width="35" Orientation="Vertical" HorizontalAlignment="Left" 
+	  Value="50" Minimum="0" Maximum="200" 
+	  SmallChange="1" LargeChange="10"
+	  TickPlacement="BottomRight" TickFrequency="10" Background="#FF9E9E9E" ValueChanged="RectangleHeight_ValueChanged" RenderTransformOrigin="0.5,0.5">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.176"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.003"/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Canvas Margin="840,40,47,390">
+            <Rectangle HorizontalAlignment="Left" Height="126" Stroke="Black" VerticalAlignment="Top" Width="198" Canvas.Top="-10" Canvas.Left="2"/>
+            <Button x:Name="connect_Buttom" Content="Connect" Background="#FF2E9C0E" Click="Button_Click" Height="26" Canvas.Left="110" Canvas.Top="85" Width="80"/>
+            <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Enter IP" VerticalAlignment="Top" Width="100" Canvas.Left="60" Canvas.Top="25" TextChanged="TextBox_TextChanged" Background="White"/>
+            <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Enter Port" VerticalAlignment="Top" Width="100" Canvas.Left="60" Canvas.Top="55"/>
+            <Label Content="IP" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="60" FontWeight="Bold" Canvas.Left="10" Canvas.Top="21"/>
+            <Label Content="Port" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="60" FontWeight="Bold" Canvas.Left="10" Canvas.Top="51"/>
+            <Label Content="Login" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="115" Canvas.Left="10" FontSize="16" Canvas.Top="-10" FontWeight="Bold"/>
+            <Label Content="Status" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="85" FontWeight="Bold" Canvas.Left="10" Canvas.Top="83" Background="White" Foreground="#FF858585"/>
+        </Canvas>
+        <Canvas Margin="840,170,47,171">
+            <Border x:Name="Dash_Borad" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="370" VerticalAlignment="Top" Width="200" CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFB4B1B1" Offset="0.992"/>
+                        <GradientStop Color="#FFD6D6D6"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+            </Border>
+            <Label Content="Dash Borad" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="175" FontWeight="Bold" Canvas.Left="10"/>
+        </Canvas>
+
+
+
+
+
+
+        <Grid Margin="5,13,287,72">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="1" Margin="0,0,20,-65" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                <MediaElement x:Name="Media" Margin="1,9,197,259" LoadedBehavior="Manual" />
+            </Border>
+
+            <Grid Grid.Column="1" Margin="580,197,145,205">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="450*"/>
+                    <ColumnDefinition Width="232*"/>
+                    <ColumnDefinition Width="83*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="MediaName" Foreground="White" Margin="15,-155,340,155" FontWeight="Bold"><Run Text="No Media"/></TextBlock>
+
+                <Ellipse x:Name="Status" Grid.Column="3" Width="16" Height="16" Fill="Gray" Margin="2,7"/>
+            </Grid>
+
+            <StackPanel Grid.Column="1" Margin="580,10,80,138">
+                <Button Click="PlayButton_Click" Content="Play"/>
+                <Button Click="PauseButton_Click" Content="Pause"/>
+                <Button Click="StopButton_Click" Content="Stop"/>
+                <ToggleButton Click="MuteButton_Click" Margin="0 5 0 0" Content="Mute"/>
+
+                <TextBlock FontSize="10"><Run Text="Volume"/></TextBlock>
+                <Slider x:Name="VolumeSlider"
+                    Value="0.75" Maximum="1"
+                    ValueChanged="VolumeSlider_ValueChanged"/>
+
+                <TextBlock FontSize="10"><Run Text="Balance"/></TextBlock>
+                <Slider x:Name="BalanceSlider"
+                    Value="0" Minimum="-1" Maximum="1"
+                    ValueChanged="Balance_ValueChanged"/>
+
+                <TextBlock FontSize="10"><Run Text="Speed"/></TextBlock>
+                <Slider x:Name="SpeedSlider"
+                    Value="1" Minimum="0" Maximum="4"
+                    ValueChanged="Speed_ValueChanged"
+                    TickPlacement="Both"
+                    IsSnapToTickEnabled="True" Ticks="0, 0.25, 0.5, 1, 2, 4"/>
+            </StackPanel>
+
+            <Button Grid.Column="1" Click="LoadButton_Click" Margin="580,242,80,153" Content="Load"/>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Height="30" Margin="90,291,487,226" Background="#FFF1EDED">
+            <TextBlock Text="Seek" VerticalAlignment="Center"/>
+            <Slider Margin="2" Width="435" x:Name="sliderSeek"  MouseLeftButtonUp="sliderSeek_MouseLeftButtonUp"  Value="{Binding _position, ElementName=MediaElement}" SmallChange="1" RenderTransformOrigin="0.5,0.5" ValueChanged="sliderSeek_ValueChanged">
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.276"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
+            <TextBlock Text="{Binding Value, ElementName=sliderSeek, StringFormat=0}" VerticalAlignment="Bottom" Width="106" Height="44" Margin="0,0,0,-14"/>
+        </StackPanel>
+
+        <StatusBar Margin="5,291,1022,224">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Margin="0,-6,68,0" Height="38" VerticalAlignment="Top">
+                <TextBlock x:Name="lblProgressStatus" Width="55" Height="15"><Run Text="00:00:00"/></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Margin="0,0,0,217">
+                <Slider x:Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" Height="45" Margin="70,0,37,0" Background="#FFD32E2E" BorderBrush="#FF3D958D" Foreground="#FF938F44" />
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2"/>
+        </StatusBar>
+
+
+        <ListBox x:Name="data_from_files" Margin="495,380,472,11" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <ListBoxItem Background="#FF75D393" Content="data #1"/>
+            <ListBoxItem Background="#FF758CD3" Content="data #2"/>
+            <ListBoxItem Background="#FF75CAD3" Content="data #3"/>
+            <ListBoxItem Background="#FFC967D8" Content="data #4"/>
+        </ListBox>
+
+
+        <ListView Margin="844,200,53,42" x:Name="lvUsers" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Data" Width="75" DisplayMemberBinding="{Binding Data}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBox TextWrapping="Wrap" Text="graphs" Margin="625,355,332,23" Background="#FF30B1B8" FontWeight="Bold"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="505,349,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
+
+
+        <Grid Margin="20,-220,5,167">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="joystickInfoLabel"/>
+            <View.jo:OnScreenJoystick x:Name="onScreenJoystick" Grid.Row="2" Margin="35,455,832,-125"/>
+        </Grid>
+
+    </Grid>
+</Window>
