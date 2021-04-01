@@ -37,6 +37,7 @@
             </Slider.RenderTransform>
         </Slider>
         <Canvas Margin="840,40,47,390">
+            
             <Rectangle HorizontalAlignment="Left" Height="126" Stroke="Black" VerticalAlignment="Top" Width="198" Canvas.Top="-10" Canvas.Left="2"/>
             <Button x:Name="connect_Buttom" Content="Connect" Background="#FF2E9C0E" Click="Button_Click" Height="26" Canvas.Left="110" Canvas.Top="85" Width="80"/>
             <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Enter IP" VerticalAlignment="Top" Width="100" Canvas.Left="60" Canvas.Top="25" TextChanged="TextBox_TextChanged" Background="White"/>
@@ -63,8 +64,7 @@
 
 
 
-
-        <Grid Margin="5,13,287,72">
+        <Grid Margin="5,0,332.333,226" Background="#FF070341">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="155*"/>
@@ -72,14 +72,14 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="40.667"/>
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="White" BorderThickness="1" Margin="0,0,20,-65" Grid.ColumnSpan="2" Grid.RowSpan="2">
-                <MediaElement x:Name="Media" Margin="1,9,197,259" LoadedBehavior="Manual" />
+            <Border BorderThickness="1" Margin="9.667,14,186,36.667" Grid.RowSpan="2" Grid.Column="1">
+                <MediaElement x:Name="Media" Margin="23.667,-1.333,27.333,-1.333" LoadedBehavior="Manual" Height="270" VerticalAlignment="Top" OpacityMask="Black" />
             </Border>
 
-            <Grid Grid.Column="1" Margin="580,197,145,205">
+            <Grid Grid.Column="1" Margin="579.667,197,145,83">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="450*"/>
                     <ColumnDefinition Width="232*"/>
@@ -92,23 +92,111 @@
                 <Ellipse x:Name="Status" Grid.Column="3" Width="16" Height="16" Fill="Gray" Margin="2,7"/>
             </Grid>
 
-            <StackPanel Grid.Column="1" Margin="580,10,80,138">
-                <Button Click="PlayButton_Click" Content="Play"/>
-                <Button Click="PauseButton_Click" Content="Pause"/>
-                <Button Click="StopButton_Click" Content="Stop"/>
-                <ToggleButton Click="MuteButton_Click" Margin="0 5 0 0" Content="Mute"/>
+            <StackPanel Grid.Column="1" Margin="579.667,10,41,-0.333" Grid.RowSpan="2">
 
-                <TextBlock FontSize="10"><Run Text="Volume"/></TextBlock>
+
+                <Button Click="PlayButton_Click" Content="Play" FontWeight="Bold" Foreground="Black" FontSize="14" Height="35">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FFF35676"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFFF8099"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" CornerRadius="12"
+                                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+                <Button Click="PauseButton_Click" Content="Pause" Height="35" FontWeight="Bold" FontSize="14">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF1EB125"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF3CF345"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" CornerRadius="12"
+                                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Click="StopButton_Click" Content="Stop" Height="41" FontWeight="Bold" FontSize="14">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF1EB125"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF3CF345"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" CornerRadius="12"
+                                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Click="MuteButton_Click" Margin="0 5 0 0" Content="Mute" FontWeight="Bold" FontSize="14">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF1EB125"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF3CF345"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" CornerRadius="12"
+                                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+
+
+                <TextBlock FontSize="10" FontWeight="Bold" Foreground="White"><Run Text="Volume"/></TextBlock>
                 <Slider x:Name="VolumeSlider"
                     Value="0.75" Maximum="1"
                     ValueChanged="VolumeSlider_ValueChanged"/>
 
-                <TextBlock FontSize="10"><Run Text="Balance"/></TextBlock>
+                <TextBlock FontSize="10" FontWeight="Bold" Foreground="White"><Run Text="Balance"/></TextBlock>
                 <Slider x:Name="BalanceSlider"
                     Value="0" Minimum="-1" Maximum="1"
-                    ValueChanged="Balance_ValueChanged"/>
+                    ValueChanged="Balance_ValueChanged" RenderTransformOrigin="0.985,0.5"/>
 
-                <TextBlock FontSize="10"><Run Text="Speed"/></TextBlock>
+                <TextBlock FontSize="10" FontWeight="Bold" Foreground="White"><Run Text="Speed"/></TextBlock>
                 <Slider x:Name="SpeedSlider"
                     Value="1" Minimum="0" Maximum="4"
                     ValueChanged="Speed_ValueChanged"
@@ -116,25 +204,31 @@
                     IsSnapToTickEnabled="True" Ticks="0, 0.25, 0.5, 1, 2, 4"/>
             </StackPanel>
 
-            <Button Grid.Column="1" Click="LoadButton_Click" Margin="580,242,80,153" Content="Load"/>
-        </Grid>
-
-        <StackPanel Orientation="Horizontal" Height="30" Margin="90,291,487,226" Background="#FFF1EDED">
-            <TextBlock Text="Seek" VerticalAlignment="Center"/>
-            <Slider Margin="2" Width="435" x:Name="sliderSeek"  MouseLeftButtonUp="sliderSeek_MouseLeftButtonUp"  Value="{Binding _position, ElementName=MediaElement}" SmallChange="1" RenderTransformOrigin="0.5,0.5" ValueChanged="sliderSeek_ValueChanged">
-                <Slider.RenderTransform>
+            <Button Grid.Column="1" Click="LoadButton_Click" Margin="575.667,10,41,3.667" Content="Load" RenderTransformOrigin="0.5,0.5" Background="#FF00A4AE" Grid.Row="1">
+                <Button.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.276"/>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="-180"/>
                         <TranslateTransform/>
                     </TransformGroup>
-                </Slider.RenderTransform>
-            </Slider>
-            <TextBlock Text="{Binding Value, ElementName=sliderSeek, StringFormat=0}" VerticalAlignment="Bottom" Width="106" Height="44" Margin="0,0,0,-14"/>
+                </Button.RenderTransform>
+            </Button>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Height="30" Margin="90,291,508.333,226" Background="#FF070341">
+            <Slider Margin="2,2,2,1" Width="457" x:Name="sliderSeek"  MouseLeftButtonUp="sliderSeek_MouseLeftButtonUp"  Value="{Binding _position, ElementName=MediaElement}" SmallChange="1" RenderTransformOrigin="0.5,0.5" ValueChanged="sliderSeek_ValueChanged" BorderBrush="#FFC42828" Foreground="#FF3C5741" Background="#FF070341" OpacityMask="#FF00477D"/>
         </StackPanel>
 
-        <StatusBar Margin="5,291,1022,224">
+        
+        
+        
+        
+        
+        
+        
+        
+        <StatusBar Margin="24,291,1003.333,226" Background="#FF070341">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -146,8 +240,8 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
-            <StatusBarItem Margin="0,-6,68,0" Height="38" VerticalAlignment="Top">
-                <TextBlock x:Name="lblProgressStatus" Width="55" Height="15"><Run Text="00:00:00"/></TextBlock>
+            <StatusBarItem Margin="6,-4,22.333,-2.667" Height="36" VerticalAlignment="Top" Background="#FF070341" FontWeight="Bold">
+                <TextBlock x:Name="lblProgressStatus" Width="55" Height="15" FontWeight="Bold" Foreground="White"><Run Text="00:00:00"/></TextBlock>
             </StatusBarItem>
             <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Margin="0,0,0,217">
                 <Slider x:Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" Height="45" Margin="70,0,37,0" Background="#FFD32E2E" BorderBrush="#FF3D958D" Foreground="#FF938F44" />
@@ -178,15 +272,24 @@
         <Label Content="Label" HorizontalAlignment="Left" Margin="505,349,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
 
 
-        <Grid Margin="20,-220,5,167">
+        <Grid Margin="10,321,643.333,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="299*"/>
+                <ColumnDefinition Width="71*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="0*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="75*"/>
+                <RowDefinition Height="229*"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="joystickInfoLabel"/>
-            <View.jo:OnScreenJoystick x:Name="onScreenJoystick" Grid.Row="2" Margin="35,455,832,-125"/>
+            <TextBlock Name="joystickInfoLabel" Margin="0,459.667,50,-289.667" Grid.Row="2"/>
+            <View.jo:OnScreenJoystick x:Name="onScreenJoystick" Grid.Row="1" Margin="0,10,119.667,26.333" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
         </Grid>
+
+
+
 
     </Grid>
 </Window>
