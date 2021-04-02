@@ -136,10 +136,10 @@ namespace ad2ex1
             Media.Volume = VolumeSlider.Value;
         }
 
-        private void Balance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+      /*  private void Balance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Media.Balance = BalanceSlider.Value;
-        }
+        }*/
 
         private void Speed_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -148,14 +148,14 @@ namespace ad2ex1
 
         private void Media_MediaOpened(object sender, RoutedEventArgs e)
         {
-            Status.Fill = Brushes.Green;
+          ////  Status.Fill = Brushes.Green;
             _position = Media.NaturalDuration.TimeSpan;
             sliderSeek.Minimum = 0;
             sliderSeek.Maximum = _position.TotalSeconds;
 
         }
 
-        private void Media_MediaEnded(object sender, RoutedEventArgs e)
+    /*    private void Media_MediaEnded(object sender, RoutedEventArgs e)
         {
             Status.Fill = Brushes.Blue;
         }
@@ -164,7 +164,7 @@ namespace ad2ex1
         {
             Status.Fill = Brushes.Red;
         }
-
+    */
 
 
         private void sliderSeek_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
