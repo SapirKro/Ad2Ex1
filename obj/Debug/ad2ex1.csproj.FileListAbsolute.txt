@@ -20,3 +20,5 @@ C:\Users\speed\source\repos\ad2ex1\obj\Debug\View\MediaElementDemo.baml
 C:\Users\speed\source\repos\ad2ex1\obj\Debug\View\MediaElementDemo.g.cs
 C:\Users\speed\source\repos\ad2ex1\obj\Debug\View\jo\OnScreenJoystick.g.cs
 C:\Users\speed\source\repos\ad2ex1\obj\Debug\View\jo\OnScreenJoystick.baml
+C:\Users\speed\source\repos\ad2ex1\obj\Debug\Resources\SliderStyle.baml
+C:\Users\speed\source\repos\ad2ex1\obj\Debug\Resources\XMLFile1.baml

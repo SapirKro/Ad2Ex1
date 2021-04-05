@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/xmlfile1.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/xmlfile1.xml")]
 
 
