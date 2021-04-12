@@ -14,7 +14,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
+
+using System.ComponentModel;
 using System.IO;
+using System.Net.Sockets;
+using System.Threading;
+
 
 using System.Windows.Forms;
 
@@ -65,10 +71,24 @@ namespace ad2ex1
            /// controllerViewModel.VM_XMLPath = "C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml";
           ////  controllerViewModel.xmlPraser();
             controllerViewModel.VM_FGPath = "C:\\Program Files\\FlightGear 2020.3.6";
+            controllerViewModel.VM_XMLPath = "C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml";
+           controllerViewModel.VM_fpath= "C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\reg_flight.csv";
+            readCSVfile();
+            
+            controllerViewModel.splitAtt();
+            controllerViewModel.xmlPraser();
+            
+            ThreadStart thread_Delegate = new ThreadStart(c.connect);
+            Thread thread = new Thread(thread_Delegate);
+            thread.Start();
+            PlayButton_Click(this, null);
             ///   controllerViewModel = new ViewModelController(c);
             ///  this.DataContext = controllerViewModel;
             //checking if FG folder is in the "normal" place
         }
+
+
+
 
 
         private void timer_Tick(object sender, EventArgs e)
@@ -112,6 +132,11 @@ namespace ad2ex1
         }
 
 
+        /// <summary>
+        //////MEDIA LOAD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
@@ -197,6 +222,7 @@ namespace ad2ex1
         private void Speed_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Media.SpeedRatio = SpeedSlider.Value;
+            
         }
 
         private void Media_MediaOpened(object sender, RoutedEventArgs e)

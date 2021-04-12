@@ -17,9 +17,10 @@ namespace ad2ex1.Model
     public class Mclient : MInterfaceClient
 
     {
-        private String IP;
+        private String IP="localhost";
+        private int port = 5400;
         private List<string> propertiesNames;
-        private int port, rowsNumber, sleepTime;
+        private int rowsNumber, sleepTime;
         private List<string> altimeterList, elevatorList;
         private List<string>  rudderList = new List<string>();
         private List<string> throttleList = new List<string>();
@@ -468,10 +469,11 @@ namespace ad2ex1.Model
         /*--generic=socket,in,10,127.0.0.1,5400,tcp,playback_small\n--fdm = null"*/
         public void connect()
         {
+           
+
             try
             {
-
-                TcpClient client = new TcpClient(IP, port);
+               TcpClient client = new TcpClient(IP, port);
                var clientNetworkStream = client.GetStream();
                 //put all CSV into allCSVLines 
                 String[] allCSVLines = File.ReadAllLines(CSVfilePath);
@@ -482,8 +484,7 @@ namespace ad2ex1.Model
                 // sending one line at a time to server
                                 while (rowsNumber > currentLineNumber)
                 {
-       
-                    allCSVLines[currentLineNumber] += "\n";
+                         allCSVLines[currentLineNumber] += "\n";
                     //encode current line to byte to write to server
                     Byte[] currentLineBytes = System.Text.Encoding.ASCII.GetBytes(allCSVLines[currentLineNumber]);
                     // send the line encoding to server
