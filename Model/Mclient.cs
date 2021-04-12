@@ -39,12 +39,21 @@ namespace ad2ex1.Model
             rollIndex, pitchIndex, yawIndex, headingDegIndex, aileronIndex, elevatorIndex;
         private String[] csvCopy;
         private float aileron, elevator, headingDeg;
+      public bool isStop = false;
         public Mclient(String IP, int port)
         {
             this.port = port;
             this.IP = IP;
         }
-
+        public void toStop()
+        {
+            isStop =true;
+        }
+        public void toPlay()
+        {
+            isStop = false;
+           /// return true;
+        }
 
         public float Roll
         {
@@ -66,7 +75,7 @@ namespace ad2ex1.Model
         {
             get
             {
-                return CurrentLineNumber;
+                return currentLineNumber;
             }
             set
             {
@@ -444,6 +453,9 @@ namespace ad2ex1.Model
                 }
             }
         }
+
+        
+
         public void joyStickPos()
         {
             aileronList = allPropertiesLists[aileronIndex];
@@ -494,7 +506,10 @@ namespace ad2ex1.Model
                     // get flight variables new position
                     extractData();
                     //inc index to next line
-                    currentLineNumber++;
+                    if (isStop == false)
+                    {
+                        currentLineNumber++;
+                    }
                     //sleep until need to check again 
                     Thread.Sleep(sleepTime);
                 }
@@ -508,6 +523,7 @@ namespace ad2ex1.Model
             }
 
         }
+
 
                 public void NotifyPropertyChanged(string name)
         {

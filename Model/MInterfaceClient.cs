@@ -26,6 +26,8 @@ namespace ad2ex1.Model
             get;
             set;
         }
+
+        
         int SleepTime
         {
             get;
