@@ -29,7 +29,7 @@ namespace ad2ex1
     {
         TimeSpan _position;
         DispatcherTimer _timer = new DispatcherTimer();
-        private bool mediaPlayerIsPlaying = false;
+        //////private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
         public MainWindow()
         {
@@ -102,6 +102,30 @@ namespace ad2ex1
             {
                 Media.Source = new Uri(dialog.FileName);
                 MediaName.Text = dialog.FileName;
+
+            }
+
+        }
+
+        private void LoadCSV_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog1 = new OpenFileDialog();
+            dialog1.Title = "Choose CSV";
+            if (dialog1.ShowDialog() == true)
+            {
+
+
+            }
+
+        }
+
+        private void LoadXML_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog2 = new OpenFileDialog();
+            dialog2.Title = "Choose XML";
+            if (dialog2.ShowDialog() == true)
+            {
+              
 
             }
 

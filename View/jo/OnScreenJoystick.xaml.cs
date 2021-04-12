@@ -7,7 +7,7 @@ using System.Windows.Media.Animation;
 namespace ad2ex1.View.jo
 
 {
-    /// <summary>Interaction logic for Joystick.xaml</summary>
+    /// <summary>interaction logic for Joystick.xaml</summary>
     public partial class OnScreenJoystick : UserControl
     {
         /// <summary>Current angle in degrees from 0 to 360</summary>

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace ad2ex1.View
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// interaction logic for UserControl1.xaml
     /// </summary>
     public partial class Joystick : UserControl
     {

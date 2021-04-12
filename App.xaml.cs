@@ -9,7 +9,7 @@ using System.Windows;
 namespace ad2ex1
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
