@@ -14,10 +14,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using System.IO;
+
+using System.Windows.Forms;
+
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using System.Windows.Controls.Primitives;
 
 using Microsoft.Win32;
-
+using ad2ex1.Model;
+using ad2ex1.ViewModel;
 
 
 namespace ad2ex1
@@ -27,7 +33,9 @@ namespace ad2ex1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ViewModelController controllerViewModel;
         TimeSpan _position;
+        private MInterfaceClient clientModel;
         DispatcherTimer _timer = new DispatcherTimer();
         //////private bool mediaPlayerIsPlaying = false;
         private bool userIsDraggingSlider = false;
@@ -50,6 +58,16 @@ namespace ad2ex1
             items.Add(new User() { Name = "yaw", Data = +5 });
             items.Add(new User() { Name = "pitch", Data = -2 });
             lvUsers.ItemsSource = items;
+
+            Mclient c = new Mclient("localhost", 5400);
+            clientModel = c;
+            controllerViewModel = new ViewModelController(c);
+           /// controllerViewModel.VM_XMLPath = "C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml";
+          ////  controllerViewModel.xmlPraser();
+            controllerViewModel.VM_FGPath = "C:\\Program Files\\FlightGear 2020.3.6";
+            ///   controllerViewModel = new ViewModelController(c);
+            ///  this.DataContext = controllerViewModel;
+            //checking if FG folder is in the "normal" place
         }
 
 
@@ -106,29 +124,40 @@ namespace ad2ex1
             }
 
         }
-
+        private void readCSVfile()
+        {
+            String[] csvLine = File.ReadAllLines(controllerViewModel.VM_fpath);
+            controllerViewModel.VM_CSVcopy = csvLine;
+        }
         private void LoadCSV_Click(object sender, RoutedEventArgs e)
         {
+          
+         
             var dialog1 = new OpenFileDialog();
             dialog1.Title = "Choose CSV";
             if (dialog1.ShowDialog() == true)
             {
-
-
+                controllerViewModel.VM_fpath = dialog1.FileName;
+                
             }
-
+            readCSVfile();
+            controllerViewModel.splitAtt();
+            PlayButton_Click(this, null);
+            
         }
 
         private void LoadXML_Click(object sender, RoutedEventArgs e)
         {
+           //// controllerViewModel.VM_XMLPath = "C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml";
+            ////  
             var dialog2 = new OpenFileDialog();
             dialog2.Title = "Choose XML";
             if (dialog2.ShowDialog() == true)
             {
-              
+                controllerViewModel.VM_XMLPath = dialog2.FileName;
 
             }
-
+            controllerViewModel.xmlPraser();
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)

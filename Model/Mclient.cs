@@ -32,10 +32,11 @@ namespace ad2ex1.Model
         private float airspeed,yaw,roll,pitch,altimeter, flight_direction, attitude;
         private float rudder, throttle;
         private int currentLineNumber;
-        List<List<string>> allMyPropertiesLists;
+        private  string  xmlpath;
+        List<List<string>> allMyPropertiesLists= new List<List<string>>();
         private int rudderIndex, throttleIndex, airspeedIndex, altimeterIndex,
             rollIndex, pitchIndex, yawIndex, headingDegIndex, aileronIndex, elevatorIndex;
-
+        private String[] csvCopy;
         private float aileron, elevator, headingDeg;
         public Mclient(String IP, int port)
         {
@@ -309,7 +310,23 @@ namespace ad2ex1.Model
                 }
             }
         }
+        
 
+               public int RowsNumber
+        {
+            get
+            {
+                return rowsNumber;
+            }
+            set
+            {
+                if (RowsNumber != value)
+                {
+                    rowsNumber = value;
+                    NotifyPropertyChanged("RowsNumber");
+                }
+            }
+        }
         public float Yaw
         {
             get
@@ -325,6 +342,36 @@ namespace ad2ex1.Model
                 }
             }
         }
+        public String[] CSVcopy
+        {
+            get
+            {
+                return csvCopy;
+            }
+            set
+            {
+                if (CSVcopy != value)
+                {
+                    csvCopy = value;
+                }
+            }
+        }
+        public int SleepTime
+        {
+            get
+            {
+                return sleepTime;
+            }
+            set
+            {
+                if (SleepTime != value)
+                {
+                    sleepTime = value;
+                    NotifyPropertyChanged(" sleepTime");
+                }
+            }
+        }
+
         public float Pitch
         {
             get
@@ -337,6 +384,62 @@ namespace ad2ex1.Model
                 {
                     pitch = value;
                     NotifyPropertyChanged("pitch");
+                }
+            }
+        }
+
+        public void xmlParser()
+        {
+            propertiesNames = new List<string>();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(XMLPath);
+            //finding the output node 
+            XmlNode node = doc.DocumentElement.SelectSingleNode("/PropertyList/generic/output");
+            //iterating all childer nodes in output node
+            foreach (XmlNode n in node)
+            {
+                //checking if node names equals to chunck - if it is - taking name attribute from chunck
+                if (n.LocalName.Equals("chunk"))
+                {
+                    string name = n.SelectSingleNode("name").InnerText;
+                    propertiesNames.Add(name);
+                }
+            }
+
+        }
+
+        public void attSplit(string[] csvFile)
+        {
+            int counter = 0;
+            //iterating array - splitting every cell (line) in array
+            foreach (string line in csvFile)
+            {
+                
+                string[] curr = line.Split(',');
+                //adding attributes to the right header list
+                for (int i = 0; i < curr.Length; i++)
+                {
+                    if (counter <= curr.Length - 1)
+                    {
+                        allMyPropertiesLists.Add(new List<string>());
+                        counter++;
+                    }
+                    allMyPropertiesLists[i].Add(curr[i]);
+                }
+            }
+        }
+        public String XMLPath
+        {
+            get
+            {
+                return xmlpath;
+            }
+            set
+            {
+                if (XMLPath != value)
+                {
+                    xmlpath = value;
+                    NotifyPropertyChanged("XMLpath");
                 }
             }
         }
@@ -403,7 +506,7 @@ namespace ad2ex1.Model
                 Console.WriteLine("error ", e1);
             }
 
-            }
+        }
 
                 public void NotifyPropertyChanged(string name)
         {

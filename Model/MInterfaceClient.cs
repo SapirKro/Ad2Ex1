@@ -16,7 +16,26 @@ namespace ad2ex1.Model
    public interface MInterfaceClient : INotifyPropertyChanged
 
     {
-
+        string XMLPath
+        {
+            get;
+            set;
+        }
+        String[] CSVcopy
+        {
+            get;
+            set;
+        }
+        int SleepTime
+        {
+            get;
+            set;
+        }
+        int RowsNumber
+        {
+            get;
+            set;
+        }
         string CSVFilePath
         {
             get;
@@ -27,7 +46,7 @@ namespace ad2ex1.Model
             get;
             set;
         }
-
+        void xmlParser();
         float Roll
         {
             get;
@@ -37,6 +56,7 @@ namespace ad2ex1.Model
         {
             get;
         }
+        void attSplit(string[] csvFile);
         List<string> PropertiesNames
         {
             get;
@@ -101,5 +121,6 @@ namespace ad2ex1.Model
             get;
             set;
         }
+        void connect();
     }
 }
