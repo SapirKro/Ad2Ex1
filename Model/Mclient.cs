@@ -30,8 +30,8 @@ namespace ad2ex1.Model
             , pitchList = new List<string>(),
           yawList = new List<string>(), headingDegList = new List<string>();
         public event PropertyChangedEventHandler PropertyChanged;
-        private float airspeed,yaw,roll,pitch,altimeter, flight_direction, attitude;
-        private float rudder, throttle;
+        private float airspeed,yaw,roll,pitch, flight_direction, attitude;
+        private float rudder, throttle, altimeter;
         private int currentLineNumber;
         private  string  xmlpath;
         List<List<string>> allMyPropertiesLists= new List<List<string>>();
@@ -217,6 +217,7 @@ namespace ad2ex1.Model
         public void extractData ()
         {
             rudderList = allPropertiesLists[rudderIndex];
+
             throttleList = allPropertiesLists[throttleIndex];
             airspeedList = allPropertiesLists[airspeedIndex];
             altimeterList = allPropertiesLists[altimeterIndex];
@@ -237,8 +238,9 @@ namespace ad2ex1.Model
                         //calc new position for Rudder and Throttle
                         Rudder = rudderTemp * 108 + 108;
                         Throttle = throttleTemp * -226 + 226;
-                        //joystick properties
-                        float ail = float.Parse(aileronList[currentLineNumber]);
+           ///////// MessageBox.Show("Throttle %d \n", Throttle,  MessageBoxButton.OK);
+            //joystick properties
+            float ail = float.Parse(aileronList[currentLineNumber]);
                         float elev = float.Parse(elevatorList[currentLineNumber]);
                         Aileron = ail * 50 + 60;
                         Elevator = elev * 50 + 60;
@@ -298,7 +300,7 @@ namespace ad2ex1.Model
             {
                 if (Altimeter != value)
                 {
-                    airspeed = value;
+                    altimeter = value;
                     NotifyPropertyChanged("altimeter");
                 }
             }
@@ -517,9 +519,11 @@ namespace ad2ex1.Model
                 clientNetworkStream.Close();
                 client.Close();
             }
-            catch (ArgumentNullException e1)
+            
+            catch (Exception e1)
             {
-                Console.WriteLine("error ", e1);
+                MessageBox.Show("Error\nDid you start flight gear?\n", "Error", MessageBoxButton.OK);
+                
             }
 
         }

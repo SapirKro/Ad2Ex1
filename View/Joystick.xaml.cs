@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using ad2ex1.ViewModel;
+using ad2ex1.Model;
 namespace ad2ex1.View
 {
     /// <summary>
@@ -20,9 +21,13 @@ namespace ad2ex1.View
     /// </summary>
     public partial class Joystick : UserControl
     {
-        public Joystick()
+        public viewModelJoystick joystickVM;
+        public Joystick(MInterfaceClient c)
         {
             InitializeComponent();
+            joystickVM = new viewModelJoystick(c);
+            DataContext = joystickVM;
+           //// Loaded += JoystickView_Loaded;
         }
     }
 }

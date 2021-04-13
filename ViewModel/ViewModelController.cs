@@ -44,7 +44,7 @@ namespace ad2ex1.ViewModel
                 }
 
             }
-            public double VM_playSpeed
+          /*  public double VM_playSpeed
             {
                 get
                 {
@@ -78,7 +78,7 @@ namespace ad2ex1.ViewModel
                     return clientModel.RowsNumber;
                 }
 
-            }
+            }*/
             public TimeSpan VM_Time
             {
                 get
@@ -176,7 +176,7 @@ namespace ad2ex1.ViewModel
                     onPropertyChanged("VM_" + e.PropertyName);
                 };
             }
-            public void connect()
+           /* public void connect()
             {
                 //checking if there is path for FG
                 if (VM_fpath != null)
@@ -207,7 +207,7 @@ namespace ad2ex1.ViewModel
                     MessageBox.Show("Please load a CSV and XML file before running the simulation", "File Missing", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            /*setting up time - every second passed*/
+            /*setting up time - every second passed
             public void settingUpTime()
             {
                 int min, sec, hours;
@@ -226,6 +226,7 @@ namespace ad2ex1.ViewModel
                 if (connectThread != null && connectThread.IsAlive)
                     connectThread.Suspend();
             }
+        */
             /*copy XML if doesn't in protocol folder. User should select XML file*/
             public void copyXML()
             {

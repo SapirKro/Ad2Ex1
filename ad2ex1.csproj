@@ -61,6 +61,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Mclient.cs" />
     <Compile Include="Model\MInterfaceClient.cs" />
+    <Compile Include="ViewModel\viewModelJoystick.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\ViewModelController.cs" />
     <Compile Include="View\Joystick.xaml.cs">

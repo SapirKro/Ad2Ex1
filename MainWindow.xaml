@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:View.jo="clr-namespace:ad2ex1.View.jo"
+         xmlns:Model="clr-namespace:ad2ex1.Model"
         mc:Ignorable="d"
         Title="MainWindow" Height="617" Width="1100">
 
@@ -14,7 +15,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
+   
     <!--
     <Window.Resources>
         <ResourceDictionary>
@@ -40,6 +41,7 @@
   Width="194" Orientation="Horizontal" HorizontalAlignment="Left" 
   Value="0" Minimum="0" Maximum="10" 
   SmallChange="1" LargeChange="10"
+                
   TickPlacement="BottomRight" TickFrequency="1" ValueChanged="rudder_ValueChanged" RenderTransformOrigin="0.5,0.5" Background="#FF070341" Foreground="#FFE5E5E5" BorderBrush="#FFB03E3E">
             <Slider.RenderTransform>
                 <TransformGroup>
@@ -182,13 +184,15 @@
                 <TextBlock x:Name="lblProgressStatus" Width="55" Height="15" FontWeight="Bold" Foreground="Black"><Run Text="00:00:00"/></TextBlock>
             </StatusBarItem>
             <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch" Margin="0,0,0,217">
-                
+
             </StatusBarItem>
             <StatusBarItem Grid.Column="2"/>
         </StatusBar>
 
 
-        <ListView Margin="840,217,52,152" x:Name="lvUsers" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" >
+
+
+        <ListView Margin="840,217,52,152" x:Name="lbUsers" Background="{x:Null}" Foreground="Black" FontWeight="Bold" BorderBrush="{x:Null}" SelectionChanged="lbUsers_SelectionChanged" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}" />
@@ -241,55 +245,58 @@
             </Label.RenderTransform>
         </Label>
         <Button x:Name="LoadCSVB" Content="Load CSV" Click="LoadCSV_Click" HorizontalAlignment="Left" Margin="595,105,0,0" VerticalAlignment="Top" Width="110" Height="27" FontSize="14" FontWeight="Bold">
-        <Button.Style>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="Background" Value="#FF0B8E95"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#FF1DD7E0"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </Button.Style>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF0B8E95"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF1DD7E0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
 
-        <Button.Template>
-            <ControlTemplate TargetType="{x:Type Button}">
-                <Border Width="100" Height="25" CornerRadius="12"
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="100" Height="25" CornerRadius="12"
                                  Background="{TemplateBinding Background}">
-                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Border>
-            </ControlTemplate>
-        </Button.Template>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
 
 
         </Button>
 
         <Button x:Name="LoadXMLB" Content="Load XML"  Click="LoadXML_Click" HorizontalAlignment="Left" Margin="595,145,0,0" VerticalAlignment="Top" Width="110" Height="25" FontSize="14" FontWeight="Bold">
-        <Button.Style>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="Background" Value="#FF0B8E95"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#FF1DD7E0"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </Button.Style>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF0B8E95"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF1DD7E0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
 
-        <Button.Template>
-            <ControlTemplate TargetType="{x:Type Button}">
-                <Border Width="100" Height="25" CornerRadius="12"
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Width="100" Height="25" CornerRadius="12"
                                  Background="{TemplateBinding Background}">
-                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Border>
-            </ControlTemplate>
-        </Button.Template>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
 
 
         </Button>
-
-
-
+        <TextBox x:Name="altimeter" HorizontalAlignment="Left" Height="23" Margin="945,240,0,0" TextWrapping="Wrap" Text="{Binding  VM_altimeter}" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="airspeed" HorizontalAlignment="Left" Height="23" Margin="945,263,0,0" TextWrapping="Wrap" Text="{Binding  VM_airspeed}" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="flight_direction" HorizontalAlignment="Left" Height="23" Margin="945,286,0,0" TextWrapping="Wrap" Text="{Binding  VM_flight_direction}" VerticalAlignment="Top" Width="90" />
+        <TextBox x:Name="roll" HorizontalAlignment="Left" Height="23" Margin="945,309,0,0" TextWrapping="Wrap" Text="{Binding   VM_roll}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="yaw" HorizontalAlignment="Left" Height="23" Margin="945,332,0,0" TextWrapping="Wrap" Text="{Binding   VM_yaw}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="pitch" HorizontalAlignment="Left" Height="23" Margin="945,355,0,0" TextWrapping="Wrap" Text="{Binding  VM_pitch}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
 
     </Grid>
 </Window>
