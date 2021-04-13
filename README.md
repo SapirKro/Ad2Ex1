@@ -26,3 +26,5 @@ in addition there is a dash borad that disaply the flght info and jostick.
 
 # enjoy!
 
+# UML
+https://lucid.app/lucidchart/invitations/accept/inv_d6f00fa3-8681-463b-8a9e-89ccf457eae4?viewport_loc=125%2C2%2C1278%2C668%2C0_0
