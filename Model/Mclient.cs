@@ -37,7 +37,7 @@ namespace ad2ex1.Model
         List<List<string>> allMyPropertiesLists= new List<List<string>>();
         private int rudderIndex, throttleIndex, airspeedIndex, altimeterIndex,
             rollIndex, pitchIndex, yawIndex, headingDegIndex, aileronIndex, elevatorIndex;
-        private String[] csvCopy;
+        private String[] csvfileCopy;
         private float aileron, elevator, headingDeg;
       public bool isStop = false;
         public Mclient(String IP, int port)
@@ -160,7 +160,7 @@ namespace ad2ex1.Model
                 if (Throttle != value)
                 {
                     throttle = value;
-                    NotifyPropertyChanged("Throttle");
+                    NotifyPropertyChanged("throttle");
                 }
             }
         }
@@ -183,16 +183,17 @@ namespace ad2ex1.Model
 
         public void indexsForProperties()
         {
-            rudderIndex = PropertiesNames.FindIndex(a => a.Contains("rudder"));
-            throttleIndex = PropertiesNames.FindIndex(a => a.Contains("throttle"));
-            airspeedIndex = PropertiesNames.FindIndex(a => a.Contains("airspeed-kt"));
-            altimeterIndex = PropertiesNames.FindIndex(a => a.Contains("altimeter_indicated-altitude-ft"));
-            rollIndex = PropertiesNames.FindIndex(a => a.Contains("roll-deg"));
-            pitchIndex = PropertiesNames.FindIndex(a => a.Contains("pitch-deg"));
-            yawIndex = PropertiesNames.FindIndex(a => a.Contains("side-slip-deg"));
-            headingDegIndex = PropertiesNames.FindIndex(a => a.Contains("heading-deg"));
-            aileronIndex = PropertiesNames.FindIndex(a => a.Contains("aileron"));
-            elevatorIndex = PropertiesNames.FindIndex(a => a.Contains("elevator"));
+            rudderIndex = PropertiesNames.FindIndex(x => x.Contains("rudder"));
+         
+                       aileronIndex = PropertiesNames.FindIndex(x => x.Contains("aileron"));
+            elevatorIndex = PropertiesNames.FindIndex(x => x.Contains("elevator"));
+            yawIndex = PropertiesNames.FindIndex(x => x.Contains("side-slip-deg"));
+            rollIndex = PropertiesNames.FindIndex(x => x.Contains("roll-deg"));
+            headingDegIndex = PropertiesNames.FindIndex(x => x.Contains("heading-deg"));
+            throttleIndex = PropertiesNames.FindIndex(x => x.Contains("throttle"));
+            airspeedIndex = PropertiesNames.FindIndex(x => x.Contains("airspeed-kt"));
+            altimeterIndex = PropertiesNames.FindIndex(x => x.Contains("altimeter_indicated-altitude-ft"));
+            pitchIndex = PropertiesNames.FindIndex(x => x.Contains("pitch-deg"));
         }
 
        
@@ -214,7 +215,7 @@ namespace ad2ex1.Model
 
             }
         }
-        public void extractData ()
+     /*   public void extractData ()
         {
             rudderList = allPropertiesLists[rudderIndex];
 
@@ -244,7 +245,7 @@ namespace ad2ex1.Model
                         float elev = float.Parse(elevatorList[currentLineNumber]);
                         Aileron = ail * 50 + 60;
                         Elevator = elev * 50 + 60;
-        }
+        }*/
         public float Attitude
         {
             get
@@ -273,7 +274,7 @@ namespace ad2ex1.Model
                     CSVfilePath = value;
             }
         }
-        public float Flight_direction
+        public float Flight_Direction
         {
             get
             {
@@ -281,7 +282,7 @@ namespace ad2ex1.Model
             }
             set
             {
-                if (Flight_direction != value)
+                if (Flight_Direction != value)
                 {
                     flight_direction = value;
                     NotifyPropertyChanged("flight_direction");
@@ -318,7 +319,7 @@ namespace ad2ex1.Model
                 if (Airspeed != value)
                 {
                     airspeed = value;
-                    NotifyPropertyChanged("Airspeed");
+                    NotifyPropertyChanged("airspeed");
                 }
             }
         }
@@ -335,7 +336,7 @@ namespace ad2ex1.Model
                 if (RowsNumber != value)
                 {
                     rowsNumber = value;
-                    NotifyPropertyChanged("RowsNumber");
+                    NotifyPropertyChanged("rowsNumber");
                 }
             }
         }
@@ -354,17 +355,17 @@ namespace ad2ex1.Model
                 }
             }
         }
-        public String[] CSVcopy
+        public String[] CSVFilecopy
         {
             get
             {
-                return csvCopy;
+                return csvfileCopy;
             }
             set
             {
-                if (CSVcopy != value)
+                if (CSVFilecopy != value)
                 {
-                    csvCopy = value;
+                    csvfileCopy = value;
                 }
             }
         }
@@ -379,7 +380,7 @@ namespace ad2ex1.Model
                 if (SleepTime != value)
                 {
                     sleepTime = value;
-                    NotifyPropertyChanged(" sleepTime");
+                    NotifyPropertyChanged("SleepTime");
                 }
             }
         }
@@ -400,18 +401,16 @@ namespace ad2ex1.Model
             }
         }
 
-        public void xmlParser()
+        public void xmlSplit()
         {
             propertiesNames = new List<string>();
             XmlDocument doc = new XmlDocument();
-            doc.Load(XMLPath);
-            //finding the output node 
+            doc.Load(XMLFilePath);
+
             XmlNode node = doc.DocumentElement.SelectSingleNode("/PropertyList/generic/output");
-            //iterating all childer nodes in output node
-            foreach (XmlNode n in node)
+               foreach (XmlNode n in node)
             {
-                //checking if node names equals to chunck - if it is - taking name attribute from chunck
-                if (n.LocalName.Equals("chunk"))
+                 if (n.LocalName.Equals("chunk"))
                 {
                     string name = n.SelectSingleNode("name").InnerText;
                     propertiesNames.Add(name);
@@ -420,7 +419,7 @@ namespace ad2ex1.Model
 
         }
 
-        public void attSplit(string[] csvFile)
+        public void dataSplit(string[] csvFile)
         {
             int counter = 0;
             //iterating array - splitting every cell (line) in array
@@ -440,7 +439,7 @@ namespace ad2ex1.Model
                 }
             }
         }
-        public String XMLPath
+        public String XMLFilePath
         {
             get
             {
@@ -448,17 +447,17 @@ namespace ad2ex1.Model
             }
             set
             {
-                if (XMLPath != value)
+                if (XMLFilePath != value)
                 {
                     xmlpath = value;
-                    NotifyPropertyChanged("XMLpath");
+                    NotifyPropertyChanged("XMLFilePath");
                 }
             }
         }
 
         
 
-        public void joyStickPos()
+     /*   public void joyStickPos()
         {
             aileronList = allPropertiesLists[aileronIndex];
             elevatorList = allPropertiesLists[elevatorIndex];
@@ -468,7 +467,7 @@ namespace ad2ex1.Model
             //"normalized" value for joystick postion
             Aileron = ail * 30 + 48;
             Elevator = elev * 30 + 48;
-        }
+        }*/
 
         /*
                 float MInterfaceClient.Yaw { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -494,23 +493,34 @@ namespace ad2ex1.Model
                 //saving the number of rows
                 rowsNumber = allCSVLines.Length;
                     sleepTime = 100;
-                // while loope - as long there is data to send - send one line at a time to server
-                // sending one line at a time to server
-                                while (rowsNumber > currentLineNumber)
+                string[] words;
+                  while (rowsNumber > currentLineNumber)
                 {
-                         allCSVLines[currentLineNumber] += "\n";
+                    words = allCSVLines[currentLineNumber].Split(',');
+                    Throttle = float.Parse(words[6]);
+                    Aileron = float.Parse(words[0]);
+                    Airspeed = float.Parse(words[21]);
+                    Altimeter = float.Parse(words[25]);
+                    Elevator = float.Parse(words[1]);
+                    HeadingDeg = float.Parse(words[19]);
+                    Pitch = float.Parse(words[18]);
+                    Roll = float.Parse(words[17]);
+                    Rudder = float.Parse(words[2]);
+                    Yaw = float.Parse(words[yawIndex]);
+                    
+                    allCSVLines[currentLineNumber] += "\n";
                     //encode current line to byte to write to server
                     Byte[] currentLineBytes = System.Text.Encoding.ASCII.GetBytes(allCSVLines[currentLineNumber]);
                     // send the line encoding to server
                     clientNetworkStream.Write(currentLineBytes, 0, currentLineBytes.Length);
                     /*  //calculating joystick position*/
-                      joyStickPos();
+                 ////     joyStickPos();
                     // get flight variables new position
-                    extractData();
+                 
                     //inc index to next line
                     if (isStop == false)
                     {
-                        currentLineNumber++;
+                        CurrentLineNumber++;
                     }
                     //sleep until need to check again 
                     Thread.Sleep(sleepTime);

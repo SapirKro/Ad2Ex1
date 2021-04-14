@@ -86,7 +86,7 @@
                         </TransformGroup>
                     </Ellipse.RenderTransform>
                 </Ellipse>
-                <Ellipse HorizontalAlignment="Left" Height="72.722" VerticalAlignment="Top" Width="72.936" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="{Binding VM_aileron}" Canvas.Top="{Binding VM_elevator}">
+                <Ellipse HorizontalAlignment="Left" Height="72.722" VerticalAlignment="Top" Width="72.936" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="{Binding aileronVM}" Canvas.Top="{Binding elevatorVM}">
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="#9A909090" Offset="1" />

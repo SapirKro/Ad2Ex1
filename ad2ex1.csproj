@@ -61,9 +61,9 @@
     </ApplicationDefinition>
     <Compile Include="Model\Mclient.cs" />
     <Compile Include="Model\MInterfaceClient.cs" />
-    <Compile Include="ViewModel\viewModelJoystick.cs" />
-    <Compile Include="ViewModel\IViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelController.cs" />
+    <Compile Include="ViewModel\JoystickVM.cs" />
+    <Compile Include="ViewModel\interfaceViewModel.cs" />
+    <Compile Include="ViewModel\ControlVM.cs" />
     <Compile Include="View\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
@@ -71,9 +71,6 @@
       <DependentUpon>OnScreenJoystick.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\jo\VirtualJoystickEventArgs.cs" />
-    <Compile Include="View\MediaElementDemo.xaml.cs">
-      <DependentUpon>MediaElementDemo.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,10 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\jo\OnScreenJoystick.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MediaElementDemo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -135,8 +128,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

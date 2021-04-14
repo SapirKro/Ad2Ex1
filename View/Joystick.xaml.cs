@@ -21,11 +21,11 @@ namespace ad2ex1.View
     /// </summary>
     public partial class Joystick : UserControl
     {
-        public viewModelJoystick joystickVM;
+        public JoystickVM joystickVM;
         public Joystick(MInterfaceClient c)
         {
             InitializeComponent();
-            joystickVM = new viewModelJoystick(c);
+            joystickVM = new JoystickVM(c);
             DataContext = joystickVM;
            //// Loaded += JoystickView_Loaded;
         }

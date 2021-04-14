@@ -39,7 +39,7 @@
         </Grid>
         <Slider x:Name="rudderSlider"  Margin="81,536,0,-19" 
   Width="194" Orientation="Horizontal" HorizontalAlignment="Left" 
-  Value="0" Minimum="0" Maximum="10" 
+  Value="{Binding VM_rudder}" Minimum="0" Maximum="10" 
   SmallChange="1" LargeChange="10"
                 
   TickPlacement="BottomRight" TickFrequency="1" ValueChanged="rudder_ValueChanged" RenderTransformOrigin="0.5,0.5" Background="#FF070341" Foreground="#FFE5E5E5" BorderBrush="#FFB03E3E">
@@ -217,10 +217,10 @@
                 <RowDefinition Height="229*"/>
             </Grid.RowDefinitions>
             <TextBlock Name="joystickInfoLabel" Margin="0,460,5,-290" Grid.Row="2"/>
-            <View.jo:OnScreenJoystick x:Name="onScreenJoystick" Grid.Row="1" Margin="0,10,100,26" Grid.RowSpan="2" Grid.Column="3"/>
+            <View.jo:OnScreenJoystick x:Name="onScreenJoystick" Grid.Row="1" Margin="0,10,100,26" Grid.RowSpan="2" Grid.Column="3" Loaded="onScreenJoystick_Loaded"/>
             <Slider x:Name="Thorrule"  Margin="-55,38,0,102" 
             Width="194" Orientation="Horizontal" HorizontalAlignment="Left" 
-            Value="0" Minimum="0" Maximum="10" 
+            Value="{Binding throttleVM}" Minimum="0" Maximum="10" 
             SmallChange="1"
             TickPlacement="BottomRight" TickFrequency="1" ValueChanged="Thorrule_ValueChanged" RenderTransformOrigin="0.5,0.5" Background="#FF070341" Foreground="#FFE5E5E5" BorderBrush="#FFB03E3E" Grid.ColumnSpan="4" Grid.Row="2">
                 <Slider.RenderTransform>
@@ -291,12 +291,12 @@
 
 
         </Button>
-        <TextBox x:Name="altimeter" HorizontalAlignment="Left" Height="23" Margin="945,240,0,0" TextWrapping="Wrap" Text="{Binding  VM_altimeter}" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="airspeed" HorizontalAlignment="Left" Height="23" Margin="945,263,0,0" TextWrapping="Wrap" Text="{Binding  VM_airspeed}" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="flight_direction" HorizontalAlignment="Left" Height="23" Margin="945,286,0,0" TextWrapping="Wrap" Text="{Binding  VM_flight_direction}" VerticalAlignment="Top" Width="90" />
-        <TextBox x:Name="roll" HorizontalAlignment="Left" Height="23" Margin="945,309,0,0" TextWrapping="Wrap" Text="{Binding   VM_roll}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox x:Name="yaw" HorizontalAlignment="Left" Height="23" Margin="945,332,0,0" TextWrapping="Wrap" Text="{Binding   VM_yaw}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox x:Name="pitch" HorizontalAlignment="Left" Height="23" Margin="945,355,0,0" TextWrapping="Wrap" Text="{Binding  VM_pitch}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="altimeter" HorizontalAlignment="Left" Height="23" Margin="945,240,0,0" TextWrapping="Wrap" Text="{Binding altimeterVM}" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="airspeed" HorizontalAlignment="Left" Height="23" Margin="945,263,0,0" TextWrapping="Wrap" Text="{Binding airspeedVM}" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="flight_direction" HorizontalAlignment="Left" Height="23" Margin="945,286,0,0" TextWrapping="Wrap" Text="{Binding VM_flight_direction}" VerticalAlignment="Top" Width="90" />
+        <TextBox x:Name="roll" HorizontalAlignment="Left" Height="23" Margin="945,309,0,0" TextWrapping="Wrap" Text="{Binding rollVM}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="yaw" HorizontalAlignment="Left" Height="23" Margin="945,332,0,0" TextWrapping="Wrap" Text="{Binding yawVM}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="pitch" HorizontalAlignment="Left" Height="23" Margin="945,355,0,0" TextWrapping="Wrap" Text="{Binding pitchVM}" VerticalAlignment="Top" Width="90" TextChanged="TextBox_TextChanged_1"/>
 
     </Grid>
 </Window>

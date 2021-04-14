@@ -16,17 +16,12 @@ namespace ad2ex1.Model
    public interface MInterfaceClient : INotifyPropertyChanged
 
     {
-        string XMLPath
+        string XMLFilePath
         {
             get;
             set;
         }
-        String[] CSVcopy
-        {
-            get;
-            set;
-        }
-
+      
         
         int SleepTime
         {
@@ -48,8 +43,20 @@ namespace ad2ex1.Model
             get;
             set;
         }
-        void xmlParser();
+
+       
+        void xmlSplit();
         float Roll
+        {
+            get;
+            set;
+        }
+        float Throttle
+        {
+            get;
+            set;
+        }
+        float Aileron
         {
             get;
             set;
@@ -58,7 +65,7 @@ namespace ad2ex1.Model
         {
             get;
         }
-        void attSplit(string[] csvFile);
+        void dataSplit(string[] CSVFile);
         List<string> PropertiesNames
         {
             get;
@@ -79,6 +86,11 @@ namespace ad2ex1.Model
             get;
             set;
         }
+        String[] CSVFilecopy
+        {
+            get;
+            set;
+        }
 
         float Airspeed
         {
@@ -86,7 +98,7 @@ namespace ad2ex1.Model
             set;
         }
 
-        float Flight_direction
+        float Flight_Direction
         {
             get;
             set;
@@ -103,16 +115,7 @@ namespace ad2ex1.Model
             get;
             set;
         }
-        float Throttle
-        {
-            get;
-            set;
-        }
-        float Aileron
-        {
-            get;
-            set;
-        }
+  
         float Elevator
         {
             get;
