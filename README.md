@@ -9,6 +9,7 @@ the code use MVVM design pattren. we use .NET framework to create this WPF app. 
 2.open flight gear setting and put in the bottom text box in "Additional Setting" the current commend:
 
 > --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
+> 
 > --fdm=null
 
 3.press "fly"
