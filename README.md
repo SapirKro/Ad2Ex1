@@ -17,6 +17,9 @@ the code use MVVM design pattren. we use .NET framework to create this WPF app. 
 4.open the app while flight gear loading
 
 5.load the csv and xml files.
+if exsict,the app load by deafult the files:
+> C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml";
+> C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\reg_flight.csv";
 
 enjoy!
 ## info
