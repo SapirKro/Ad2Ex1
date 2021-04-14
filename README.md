@@ -2,6 +2,10 @@
 the app transmit data to the plane using flight simultor.
 in addition there is a dash borad that disaply the flght info and jostick.
 
+the code use MVVM design pattren.
+we use .NET framework to create this WPF app.
+the app connect to the server to boradcast data.
+
 
 ## How To Use:
 
