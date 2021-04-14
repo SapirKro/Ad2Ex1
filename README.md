@@ -3,7 +3,7 @@ the app transmit data to the plane using flight simultor. in addition there is a
 
 the code use MVVM design pattren. we use .NET framework to create this WPF app. the app connect to the server to boradcast data.
 
-#How To Use:
+# How To Use:
 1.install flight fear
 
 2.open flight gear setting and put in the bottom text box in "Additional Setting" the current commend:
