@@ -486,14 +486,29 @@ namespace ad2ex1.Model
 
             try
             {
-               TcpClient client = new TcpClient(IP, port);
-                while (!client.Connected)
+             ///  TcpClient client = new TcpClient(IP, port);
+                TcpClient client1 = new TcpClient();
+
+                Console.WriteLine("trying to connect....");
+                
+                while (!client1.Connected)
                 {
-                    Console.WriteLine("trying again to connect;");
-                    client.Connect(IP, port);
+                    try
+                    {
+                        client1.Connect(IP, port);
+                    }
+                    catch
+                    {
+                        
+                        Console.WriteLine("trying again to connect in 1 second....");
+                        Thread.Sleep(1000);
+                    }
+                   
+                   
                 }
+               
                 Console.WriteLine("client connect!");
-                var clientNetworkStream = client.GetStream();
+                var clientNetworkStream = client1.GetStream();
                 //put all CSV into allCSVLines 
                 String[] allCSVLines = File.ReadAllLines(CSVfilePath);
                 //saving the number of rows
@@ -533,7 +548,7 @@ namespace ad2ex1.Model
                 }
            
                 clientNetworkStream.Close();
-                client.Close();
+                client1.Close();
             }
             
             catch (Exception e1)
