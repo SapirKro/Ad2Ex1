@@ -487,7 +487,13 @@ namespace ad2ex1.Model
             try
             {
                TcpClient client = new TcpClient(IP, port);
-               var clientNetworkStream = client.GetStream();
+                while (!client.Connected)
+                {
+                    Console.WriteLine("trying again to connect;");
+                    client.Connect(IP, port);
+                }
+                Console.WriteLine("client connect!");
+                var clientNetworkStream = client.GetStream();
                 //put all CSV into allCSVLines 
                 String[] allCSVLines = File.ReadAllLines(CSVfilePath);
                 //saving the number of rows
@@ -532,8 +538,11 @@ namespace ad2ex1.Model
             
             catch (Exception e1)
             {
-                MessageBox.Show("Error\nDid you start flight gear?\n", "Error", MessageBoxButton.OK);
-                
+                MessageBox.Show("Error\nDid you start flight gear?\ntrying again..", "Error", MessageBoxButton.OK);
+               
+                connect();
+
+
             }
 
         }
