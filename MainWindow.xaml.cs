@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Threading.Tasks;using System.Windows;
+using System.Windows.Forms;
+using DialogResult = System.Windows.Forms.DialogResult;
+
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -17,13 +19,14 @@ using System.Windows.Threading;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
+using MessageBox = System.Windows.Forms.MessageBox;
 
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 
 
-using System.Windows.Forms;
+
 
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using System.Windows.Controls.Primitives;
@@ -183,6 +186,7 @@ namespace ad2ex1
         {
             double x = SpeedSlider.Value;
             c.SleepTime = (int)(100 /x);
+            
 
 
 
@@ -224,8 +228,18 @@ namespace ad2ex1
 
         private void sliderSeek_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+             /*      String[] allCSVLines = File.ReadAllLines(controllerVM.filePathVM);
+                //saving the number of rows
+              int  rowsNumber = allCSVLines.Length;
+            if (((int)(sliderSeek.Value)) >= rowsNumber)
+            {
+            sliderSeek.Value=0;
+                sliderSeek.
+                }
+             */
+            
             c.CurrentLineNumber = (int)(sliderSeek.Value);
-
+          
            /* if (sliderSeek.IsMouseCaptureWithin)
             {
                

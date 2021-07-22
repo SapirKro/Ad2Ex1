@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ad2ex1;
-
+using System.Windows.Forms;
 using System.ComponentModel;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
-using System.Windows;
+///using System.Windows;
 using System.Xml;
 
 namespace ad2ex1.Model
@@ -490,8 +490,8 @@ namespace ad2ex1.Model
                 TcpClient client1 = new TcpClient();
 
                 Console.WriteLine("trying to connect....");
-                
-                while (!client1.Connected)
+                ///client1.Connect(IP, port);
+                while (!(client1.Connected))
                 {
                     try
                     {
@@ -515,6 +515,7 @@ namespace ad2ex1.Model
                 rowsNumber = allCSVLines.Length;
                     sleepTime = 100;
                 string[] words;
+          
                   while (rowsNumber > currentLineNumber)
                 {
                     words = allCSVLines[currentLineNumber].Split(',');
@@ -547,14 +548,29 @@ namespace ad2ex1.Model
                     Thread.Sleep(sleepTime);
                 }
            
+                if(rowsNumber <= currentLineNumber)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Flight record end.Do you want to restart the flight?", "End Record", MessageBoxButtons.YesNoCancel);
+                 if(dialogResult == DialogResult.Yes)
+{currentLineNumber=0;
+                        
+                      
+
+                          clientNetworkStream.Close();
+                client1.Close();
+    connect();
+}
+//if no:
+                }*/
                 clientNetworkStream.Close();
                 client1.Close();
             }
             
             catch (Exception e1)
             {
-                MessageBox.Show("Error\nDid you start flight gear?\ntrying again..", "Error", MessageBoxButton.OK);
-               
+               /// MessageBox.Show("Error\nDid you start flight gear?\ntrying again..", "Error", MessageBoxButton.OK);
+               DialogResult dialogResult = MessageBox.Show("Error\nDid you start flight gear?\ntrying again..", "Error", MessageBoxButtons.OK);
+           
                 connect();
 
 
