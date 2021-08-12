@@ -25,7 +25,8 @@ if exist,the app load by deafult the files:
   In addition the app save automatic the XML and CSV files in :
 > C:\\Program Files\\FlightGear 2020.3.6  
   
-  make sure you change it if Flight Gear is saved in another location.
+  make sure you change it if Flight Gear is saved in another location.  
+In the folder sampleFiles there is the files we use to test the app:"playback_small.xml" and "reg_flight.csv"
 
 enjoy!
 ## info
