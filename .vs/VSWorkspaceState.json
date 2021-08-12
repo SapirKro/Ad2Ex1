@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Model",
-    "\\Properties"
+    "\\Properties",
+    "\\Resources"
   ],
-  "SelectedNode": "\\MainWindow.xaml",
+  "SelectedNode": "\\App.xaml",
   "PreviewInSolutionExplorer": false
 }

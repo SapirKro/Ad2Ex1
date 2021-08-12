@@ -489,6 +489,28 @@ namespace ad2ex1.Model
              ///  TcpClient client = new TcpClient(IP, port);
                 TcpClient client1 = new TcpClient();
 
+
+
+
+
+   while((!File.Exists(XMLFilePath)) && (File.Exists(CSVFilePath))) {         
+                  
+                if (!File.Exists(XMLFilePath)) {
+             
+   Console.WriteLine("couldn't find the XML file");
+                  
+                         DialogResult dialogResult = MessageBox.Show("couldn't find the XML file", "Error", MessageBoxButtons.OK);
+                    
+}
+                              if (!File.Exists(CSVFilePath)) {
+     Console.WriteLine("couldn't find the CSV file");
+               
+                DialogResult dialogResult = MessageBox.Show("couldn't find the CSV file", "Error", MessageBoxButtons.OK);
+                  
+       }                     
+   System.Threading.Thread.Sleep(5000);
+}
+                              
                 Console.WriteLine("trying to connect....");
                 ///client1.Connect(IP, port);
                 while (!(client1.Connected))
@@ -561,7 +583,7 @@ namespace ad2ex1.Model
     connect();
 }
 //if no:
-                }*/
+                }
                 clientNetworkStream.Close();
                 client1.Close();
             }

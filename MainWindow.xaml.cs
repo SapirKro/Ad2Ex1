@@ -159,6 +159,8 @@ namespace ad2ex1
         {
            //// controllerVM.XMLFilePathVM = "C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml";
             ////  
+            ///
+          
             var dialog2 = new OpenFileDialog();
             dialog2.Title = "Choose XML";
             if (dialog2.ShowDialog() == true)
