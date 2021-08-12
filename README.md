@@ -4,7 +4,7 @@ In addition, there is a dashboard that displays the flight info and joystick.
 The code use MVVM design pattren. we use .NET framework to create this WPF app. 
 
 ## How To Use:
-1.Install flight fear
+1.Install flight Gear
 
 2.Open flight gear setting and put in the bottom text box in "Additional Setting" the current commend:
 
