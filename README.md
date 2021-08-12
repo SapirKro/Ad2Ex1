@@ -4,7 +4,7 @@ In addition, there is a dashboard that displays the flight info and joystick.
 The code use MVVM design pattren. we use .NET framework to create this WPF app. 
 
 ## How To Use:
-1.Install flight fear
+1.Install flight Gear
 
 2.Open flight gear setting and put in the bottom text box in "Additional Setting" the current commend:
 
@@ -21,6 +21,12 @@ if exist,the app load by deafult the files:
 > C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\playback_small.xml
 
 > C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\reg_flight.csv
+
+  In addition the app save automatic the XML and CSV files in :
+> C:\\Program Files\\FlightGear 2020.3.6  
+  
+  make sure you change it if Flight Gear is saved in another location.  
+In the folder sampleFiles there is the files we use to test the app:"playback_small.xml" and "reg_flight.csv"
 
 enjoy!
 ## info
