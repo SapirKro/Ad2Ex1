@@ -22,8 +22,9 @@ if exist,the app load by deafult the files:
 
 > C:\\Program Files\\FlightGear 2020.3.6\\data\\Protocol\\reg_flight.csv
 
-In addition the Flight Gear load from:
+In addition the app save automatic the XML and CSV files in :
 > C:\\Program Files\\FlightGear 2020.3.6
+make sure you change it if Flight Gear is saved in another location.
 
 enjoy!
 ## info
